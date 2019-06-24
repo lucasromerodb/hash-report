@@ -1,2 +1,3 @@
 files/*
 .bin
+__pycache__
