@@ -1,7 +1,7 @@
 import hashlib
 import struct
 
-folder = '/Users/lucas/Documents/development/carq-hashing/hash-file-poc/files/'
+folder = 'files/'
 
 def getHashFile(filename, returning = False):
     h = hashlib.sha256()

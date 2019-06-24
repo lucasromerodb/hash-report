@@ -4,8 +4,8 @@ from customprints import getInfoByFile, printSystemSpecs, printSeparator
 from collider import findCollision
 import time
 
-fileSize = [1, 10, 100, 200, 500, 1000]
-offset = 3
+fileSize = [1]
+offset = 0
 
 qtyOfHashes = 20
 zeros = 9
