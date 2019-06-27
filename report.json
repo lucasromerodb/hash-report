@@ -1,0 +1,22 @@
+{
+  "report": [
+    {
+      "fileName": "file-1MB.bin",
+      "sizeInMB": 1,
+      "qtyOfHashes": 20,
+      "hashTime": 0.09,
+      "hashRate": 223.32,
+      "collisionBytes": 2,
+      "collisionAttempts": 33594,
+      "collisionTime": 0.17,
+      "collisionRate": 193857.05
+    }
+  ],
+  "system": {
+    "arch": "x86_64",
+    "platform": "Darwin-18.6.0-x86_64-i386-64bit",
+    "processor": "2.7 GHz Intel Core i5 (i386)",
+    "ram": "8 GB 1867 MHz DDR3",
+    "device": "MacBook Pro (Retina, 13-inch, Early 2015)"
+  }
+}

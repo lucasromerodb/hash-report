@@ -7,11 +7,9 @@ def printSystemSpecs():
     print('Arqitectura:', platform.machine())
     print('Procesador :', platform.processor())
     print('Plataforma :', platform.platform())
-    # not available on macOS
-    # mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')  # e.g. 4015976448
-    # mem_gib = mem_bytes/(1024.**3)  # e.g. 3.74
-    # print('Memoria RAM:', int(mem_gib), 'GB')
     print('-------------------')
+
+    return platform.machine(), platform.processor(), platform.platform()
 
 
 def getInfoByFile(hashAmmount, start, fileSize):
@@ -21,6 +19,8 @@ def getInfoByFile(hashAmmount, start, fileSize):
     print('Archivo de', fileSize, 'MB hasheado', hashAmmount,'veces en %s seg.' % round(end, 2) )
     print('Hashrate', round(hashAmmount/end, 2), 'hashes/seg.')
     print(fileSize, ',', round(end, 2), ',', hashRate, sep = '')
+
+    return round(end, 2), hashRate
 
 
 def printBinaryData(text, data, spacer = '', reverse = False,  breakOn = 4):

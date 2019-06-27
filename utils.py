@@ -24,7 +24,7 @@ def getHashData(data):
 
 
 def buildData(n, digestIndex = 0):
-    nInBytes = struct.pack('I', n)
+    nInBytes = struct.pack('q', n)
     digest = getHashData(nInBytes)
     fragment = digest[digestIndex]
 
