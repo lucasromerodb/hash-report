@@ -48,7 +48,8 @@ for i in range(len(fileSize) - offset):
         'collisionRate': collisionRate2
       },
       {
-        'collisionAttempts': 3,
+        'collisionBytes': 3,
+        'collisionAttempts': collisionAttempts3,
         'collisionTime': collisionTime3,
         'collisionRate': collisionRate3
       },
