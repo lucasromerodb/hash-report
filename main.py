@@ -5,7 +5,7 @@ import time
 import json
 
 fileSize = [1, 10, 100, 200, 500, 1000]
-offset = 0
+offset = 4
 
 qtyOfHashes = 20
 zeros = 10

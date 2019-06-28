@@ -4,6 +4,10 @@
 
 ![Screenshot](screenshot.png)
 
+Code and Output
+
+![Screenshot](code.png)
+
 ## What do you need?
 
 You need at least Python 3.7.x installed https://www.python.org/downloads/
@@ -17,6 +21,8 @@ First you need to generate some dummy file/s. Run `data-gen.sh` file to generate
 ```bash
 $ bash data-gen.sh
 ```
+
+> Note: generate 500 and 1000 MB file take a lot of time (even on SSD)
 
 Then open any terminal on project folder and run the script
 
