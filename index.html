@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hash Report</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="disclaimer">
+        <h1>Reporte y análisis en base al tratamiento de datos "hasheados"</h1>
+        <h3>
+          Analizar un problema computacional, relacionado a la manipulación de datos “Hasheados”,
+          analizando el tamaño original del dato de entrada, la colision de 1, 2 y 3 bytes, cantidad
+          de intentos para encontrar colisiones, cantidad de hasheos posibles por segundo y las
+          variaciones de tiempo.
+        </h3>
+        <p>
+          Todos los datos de entrada son archivos .bin generados automaticamente con datos
+          aleatorios utilizando un script en BASH, especificando el tamaño del archivo. En todos los
+          casos se ha utilizado SHA256 para las pruebas de hasheo.
+        </p>
+        <div class="alert">
+          <code>dd if=/dev/urandom of=files/file-1MB.bin bs=1 count=1048576 # bytes (1MB)</code>
+        </div>
+        <p>
+          Tecnologías: Python, Javascript,
+          <a href="https://www.chartjs.org/samples/latest/" target="_blank">ChartJS</a>, BASH
+        </p>
+        <p>
+          <a href="https://github.com/lucasromerodb/hash-rate-and-collider-report" target="_blank"
+            >Proyecto disponible en GitHub »</a
+          >
+        </p>
+      </div>
+      <div class="chartWrapper">
+        <h3>Tiempo insumido (en seg.) en hashear un dato de entrada 20 veces</h3>
+        <canvas id="hashTime" class="chart"></canvas>
+        <p class="alert">
+          El tiempo que tarda en hashearse un archivo de mayor tamaño siempre será superior a uno
+          menor. Un archivo de un volumen de datos 1000 (mil) veses menor tardará aproximadamente
+          99.992% menos de tiempo en hashearse.
+        </p>
+      </div>
+      <div class="chartWrapper">
+        <h3>Cantidad de hashes por segundo comparando diferentes volumenes de datos</h3>
+        <canvas id="hashRate" class="chart"></canvas>
+        <p class="alert">
+          La cantidad de hashes por segundo es inversamente proporcional al tamaño del archivo. El
+          proceso de hash se hace 99.92% mas dificil con un archivo de mil veces superior al
+          original.
+        </p>
+      </div>
+      <div class="chartWrapper">
+        <h3>Cantidad de intentos de colisión por segundo</h3>
+        <p>
+          El dato que se quiere colisionar es un número generado aleatoriamente entre 0 y 1 x 10
+          <sup>10</sup>
+        </p>
+        <canvas id="collisionRate" class="chart"></canvas>
+        <p class="alert">
+          La cantidad de intentos de colisión por segundo es muy aleatoria. Esto sucede porque en
+          este ejercicio se está tratando de colisionar un número aleatorio contra el hash original.
+        </p>
+      </div>
+      <div class="chartWrapper">
+        <h3>Cantidad de intentos de colision parcial para 1, 2 y 3 bytes</h3>
+        <p>
+          El dato que se quiere colisionar es un número generado aleatoriamente entre 0 y 1 x 10
+          <sup>10</sup>
+        </p>
+        <canvas id="collisionAttemptsByBytes" class="chart"></canvas>
+        <p class="alert">
+          En este caso la cantidad de intentos es aleatoria entre archivos de distinto tamaño. Sin
+          embargo queda claro con este gráfico que cuanto mayor es la cantidad de bytes o bits a
+          colisionar, mayor es el tiempo que demora en encontrarse una colisión.
+          <br /><br />
+          El maximo para 1 byte fue ~300 intentos, mientras que para 3 bytes fue ~7.700.000
+          intentos. Esto nos dice que para una dificultad 3 veces superior, la proporción fue de un
+          99.99% más dificil.
+        </p>
+      </div>
+      <div class="chartWrapper">
+        <h3>Tiempo insumido para una colision parcial para 1, 2 y 3 bytes</h3>
+        <p>
+          El dato que se quiere colisionar es un número generado aleatoriamente entre 0 y 1 x 10
+          <sup>10</sup>
+        </p>
+        <canvas id="collisionTimeByBytes" class="chart"></canvas>
+        <p class="alert">
+          El tiempo insumido coincide muy aproximadamente con la cantidad de intentos en relación a
+          la dificultad de colisión.
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <h4>Integrantes</h4>
+      <ul class="people">
+        <li>Alejandro De Gracia</li>
+        <li>Eugenio Sarrailh</li>
+        <li>Federico Gómez</li>
+        <li>Lucas Romero Di Benedetto</li>
+      </ul>
+      <h4>Datos academicos</h4>
+      <ul class="people">
+        <li>Arquitectura de Computadores</li>
+        <li>Prof. Alejandro Pirola</li>
+        <li>UADE 2019</li>
+      </ul>
+    </div>
+    <script src="./Chart.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
