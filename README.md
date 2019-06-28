@@ -1,5 +1,9 @@
 # Hash rate and hash collider report
 
+[View Full Report »](https://lucasromerodb.github.io/hash-report/)
+
+![Screenshot](screenshot.png)
+
 ## What do you need?
 
 You need at least Python 3.7.x installed https://www.python.org/downloads/
@@ -7,6 +11,7 @@ You need at least Python 3.7.x installed https://www.python.org/downloads/
 ## How to run?
 
 First you need to generate some dummy file/s. Run `data-gen.sh` file to generate 1 to 1000 MB of data inside `files/` folder.
+
 > Default option is 1 MB file. Edit file to enable (uncomment) 10, 100, 200, 500, 1000 MB options
 
 ```bash
