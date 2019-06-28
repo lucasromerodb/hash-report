@@ -298,37 +298,6 @@ const collisionAttemptsByBytes = new Chart(document.getElementById("collisionAtt
   options: options
 });
 
-// const collisionTimeByBytes = new Chart(document.getElementById("collisionTimeByBytes"), {
-//   type: "line",
-//   data: {
-//     labels: report.report.map(i => i.sizeInMB + " MB"),
-//     datasets: [
-//       {
-//         label: "Intentos con 1 byte",
-//         data: report.report.map(i => i.collision[0].collisionTime),
-//         borderWidth: 1,
-//         backgroundColor: backgroundColor[0],
-//         borderColor: borderColor[0]
-//       },
-//       {
-//         label: "Intentos con 2 bytes",
-//         data: report.report.map(i => i.collision[1].collisionTime),
-//         borderWidth: 1,
-//         backgroundColor: backgroundColor[1],
-//         borderColor: borderColor[1]
-//       },
-//       {
-//         label: "Intentos con 3 bytes",
-//         data: report.report.map(i => i.collision[2].collisionTime),
-//         borderWidth: 1,
-//         backgroundColor: backgroundColor[2],
-//         borderColor: borderColor[2]
-//       }
-//     ]
-//   },
-//   options: options
-// });
-
 const collisionTimeByBytesOnly = new Chart(document.getElementById("collisionTimeByBytesOnly"), {
   type: "line",
   data: {
