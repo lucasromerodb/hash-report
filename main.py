@@ -5,7 +5,7 @@ import time
 import json
 
 fileSize = [1, 10, 100, 200, 500, 1000]
-offset = 5
+offset = 4
 
 qtyOfHashes = 20
 zeros = 10
@@ -63,9 +63,15 @@ arch, processor, platform = printSystemSpecs()
 report['system'] = {
   'arch': arch,
   'platform': platform,
-  'processor': '2.7 GHz Intel Core i5 (' + processor + ')',
+  'processor': [
+    '2.7 GHz Intel Core i5 (' + processor + ')',
+    '3.0 GHz Intel Core i5-7400 (' + processor + ')',
+  ],
   'ram': '8 GB 1867 MHz DDR3',
-  'device': 'MacBook Pro (Retina, 13-inch, Early 2015)'
+  'device': [
+    'MacBook Pro (Retina, 13-inch, Early 2015)',
+    'Desktop'
+    ]
 }
 
 reportToJson = json.dumps(report)
