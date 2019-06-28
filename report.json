@@ -4,12 +4,23 @@
       "fileName": "file-1MB.bin",
       "sizeInMB": 1,
       "qtyOfHashes": 20,
-      "hashTime": 0.09,
-      "hashRate": 223.32,
-      "collisionBytes": 2,
-      "collisionAttempts": 33594,
-      "collisionTime": 0.17,
-      "collisionRate": 193857.05
+      "hashTime": 0.08,
+      "hashRate": 243.16,
+      "collision": [
+        {
+          "collisionBytes": 1,
+          "collisionAttempts": 260,
+          "collisionTime": 0.0,
+          "collisionRate": 203606.99
+        },
+        {
+          "collisionBytes": 2,
+          "collisionAttempts": 10497,
+          "collisionTime": 0.07,
+          "collisionRate": 152319.9
+        },
+        { "collisionAttempts": 3, "collisionTime": 91.35, "collisionRate": 205832.42 }
+      ]
     }
   ],
   "system": {

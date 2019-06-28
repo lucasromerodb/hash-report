@@ -9,7 +9,6 @@ offset = 5
 
 qtyOfHashes = 20
 zeros = 10
-bytesQtyToCollide = 2
 
 report = {'report':[], 'system': {}}
 
@@ -25,7 +24,9 @@ for i in range(len(fileSize) - offset):
   printSeparator(fileName)
   hashTime, hashRate = getInfoByFile(qtyOfHashes, start, fileSize[i])
   digest = getHashFile(file, True)
-  collisionAttempts, collisionTime, collisionRate =  findCollision(digest, fileName, zeros, bytesQtyToCollide)
+  collisionAttempts1, collisionTime1, collisionRate1 =  findCollision(digest, fileName, zeros, 1)
+  collisionAttempts2, collisionTime2, collisionRate2 =  findCollision(digest, fileName, zeros, 2)
+  collisionAttempts3, collisionTime3, collisionRate3 =  findCollision(digest, fileName, zeros, 3)
 
   thisReport = {
     'fileName': fileName,
@@ -33,10 +34,26 @@ for i in range(len(fileSize) - offset):
     'qtyOfHashes': qtyOfHashes,
     'hashTime': hashTime,
     'hashRate': hashRate,
-    'collisionBytes': bytesQtyToCollide,
-    'collisionAttempts': collisionAttempts,
-    'collisionTime': collisionTime,
-    'collisionRate': collisionRate
+    'collision': [
+      {
+        'collisionBytes': 1,
+        'collisionAttempts': collisionAttempts1,
+        'collisionTime': collisionTime1,
+        'collisionRate': collisionRate1
+      },
+      {
+        'collisionBytes': 2,
+        'collisionAttempts': collisionAttempts2,
+        'collisionTime': collisionTime2,
+        'collisionRate': collisionRate2
+      },
+      {
+        'collisionAttempts': 3,
+        'collisionTime': collisionTime3,
+        'collisionRate': collisionRate3
+      },
+    ]
+
   }
 
   report['report'].append(thisReport)
