@@ -1,6 +1,7 @@
 import random
 import struct
 import time
+from ticker import Ticker
 from utils import buildData, getZeroQty
 from customprints import printBinaryData, printInfo
 
@@ -20,8 +21,8 @@ def findCollision(originalDigest, fileName,  zeros = 9, bytesQty = 1):
 
     originalFragment = originalDigest[0]
 
-    startTime = time.time()
-    endTime = 0
+    tick = Ticker()
+    end = 0
     attempts = 0
 
     found = False
@@ -36,15 +37,16 @@ def findCollision(originalDigest, fileName,  zeros = 9, bytesQty = 1):
             found = True
             bFile = struct.pack('q', 0)
             bNumber = struct.pack('q', number)
-            endTime = time.time() - startTime
+
+            end = tick()
 
             printInfo(originalDigest, bFile, fileName, 'FRAGMENTO A ENCONTRAR', False)
             printInfo(digest, bNumber, number, 'COLISION PARCIAL')
             print('Colisión de', bytesQty,'byte(s)')
             print("\n> Intentos:", attempts)
-            print('> Tiempo: %s seg.' % round(endTime, 2))
-            print('> Collision rate: %s c/s' % round(attempts/endTime, 2))
+            print('> Tiempo: %s seg.' % round(end, 4))
+            print('> Collision rate: %s c/s' % round(attempts/end, 4))
 
             break
 
-    return attempts, round(endTime, 2), round(attempts/endTime, 2)
+    return attempts, round(end, 4), round(attempts/end, 4)
