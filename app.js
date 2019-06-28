@@ -189,6 +189,19 @@ const borderColor = [
   "rgba(255, 159, 64, 1)"
 ];
 
+const options = {
+  responsive: true,
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true
+        }
+      }
+    ]
+  }
+};
+
 const hashTime = new Chart(document.getElementById("hashTime"), {
   type: "line",
   data: {
@@ -203,9 +216,7 @@ const hashTime = new Chart(document.getElementById("hashTime"), {
       }
     ]
   },
-  options: {
-    responsive: false
-  }
+  options: options
 });
 
 const hashRate = new Chart(document.getElementById("hashRate"), {
@@ -222,75 +233,7 @@ const hashRate = new Chart(document.getElementById("hashRate"), {
       }
     ]
   },
-  options: {
-    responsive: false
-  }
-});
-
-const collisionAttemptsByBytes = new Chart(document.getElementById("collisionAttemptsByBytes"), {
-  type: "line",
-  data: {
-    labels: report.report.map(i => i.sizeInMB + " MB"),
-    datasets: [
-      {
-        label: "Intentos con 1 byte",
-        data: report.report.map(i => i.collision[0].collisionAttempts),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[0],
-        borderColor: borderColor[0]
-      },
-      {
-        label: "Intentos con 2 bytes",
-        data: report.report.map(i => i.collision[1].collisionAttempts),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[1],
-        borderColor: borderColor[1]
-      },
-      {
-        label: "Intentos con 3 bytes",
-        data: report.report.map(i => i.collision[2].collisionAttempts),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[2],
-        borderColor: borderColor[2]
-      }
-    ]
-  },
-  options: {
-    responsive: false
-  }
-});
-
-const collisionTimeByBytes = new Chart(document.getElementById("collisionTimeByBytes"), {
-  type: "line",
-  data: {
-    labels: report.report.map(i => i.sizeInMB + " MB"),
-    datasets: [
-      {
-        label: "Intentos con 1 byte",
-        data: report.report.map(i => i.collision[0].collisionTime),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[0],
-        borderColor: borderColor[0]
-      },
-      {
-        label: "Intentos con 2 bytes",
-        data: report.report.map(i => i.collision[1].collisionTime),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[1],
-        borderColor: borderColor[1]
-      },
-      {
-        label: "Intentos con 3 bytes",
-        data: report.report.map(i => i.collision[2].collisionTime),
-        borderWidth: 1,
-        backgroundColor: backgroundColor[2],
-        borderColor: borderColor[2]
-      }
-    ]
-  },
-  options: {
-    responsive: false
-  }
+  options: options
 });
 
 const collisionRate = new Chart(document.getElementById("collisionRate"), {
@@ -321,7 +264,143 @@ const collisionRate = new Chart(document.getElementById("collisionRate"), {
       }
     ]
   },
-  options: {
-    responsive: false
-  }
+  options: options
+});
+
+const collisionAttemptsByBytes = new Chart(document.getElementById("collisionAttemptsByBytes"), {
+  type: "line",
+  data: {
+    labels: report.report.map(i => i.sizeInMB + " MB"),
+    datasets: [
+      {
+        label: "Intentos con 1 byte",
+        data: report.report.map(i => i.collision[0].collisionAttempts),
+        borderWidth: 1,
+        backgroundColor: backgroundColor[0],
+        borderColor: borderColor[0]
+      },
+      {
+        label: "Intentos con 2 bytes",
+        data: report.report.map(i => i.collision[1].collisionAttempts),
+        borderWidth: 1,
+        backgroundColor: backgroundColor[1],
+        borderColor: borderColor[1]
+      },
+      {
+        label: "Intentos con 3 bytes",
+        data: report.report.map(i => i.collision[2].collisionAttempts),
+        borderWidth: 1,
+        backgroundColor: backgroundColor[2],
+        borderColor: borderColor[2]
+      }
+    ]
+  },
+  options: options
+});
+
+// const collisionTimeByBytes = new Chart(document.getElementById("collisionTimeByBytes"), {
+//   type: "line",
+//   data: {
+//     labels: report.report.map(i => i.sizeInMB + " MB"),
+//     datasets: [
+//       {
+//         label: "Intentos con 1 byte",
+//         data: report.report.map(i => i.collision[0].collisionTime),
+//         borderWidth: 1,
+//         backgroundColor: backgroundColor[0],
+//         borderColor: borderColor[0]
+//       },
+//       {
+//         label: "Intentos con 2 bytes",
+//         data: report.report.map(i => i.collision[1].collisionTime),
+//         borderWidth: 1,
+//         backgroundColor: backgroundColor[1],
+//         borderColor: borderColor[1]
+//       },
+//       {
+//         label: "Intentos con 3 bytes",
+//         data: report.report.map(i => i.collision[2].collisionTime),
+//         borderWidth: 1,
+//         backgroundColor: backgroundColor[2],
+//         borderColor: borderColor[2]
+//       }
+//     ]
+//   },
+//   options: options
+// });
+
+const collisionTimeByBytesOnly = new Chart(document.getElementById("collisionTimeByBytesOnly"), {
+  type: "line",
+  data: {
+    labels: [1, 2, 3].map(i => i + " byte(s)"),
+    datasets: [
+      {
+        label: "1 MB",
+        data: [
+          report.report[0].collision[0].collisionTime,
+          report.report[0].collision[1].collisionTime,
+          report.report[0].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[0],
+        borderColor: borderColor[0]
+      },
+      {
+        label: "10 MB",
+        data: [
+          report.report[1].collision[0].collisionTime,
+          report.report[1].collision[1].collisionTime,
+          report.report[1].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[1],
+        borderColor: borderColor[1]
+      },
+      {
+        label: "100 MB",
+        data: [
+          report.report[2].collision[0].collisionTime,
+          report.report[2].collision[1].collisionTime,
+          report.report[2].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[2],
+        borderColor: borderColor[2]
+      },
+      {
+        label: "200 MB",
+        data: [
+          report.report[3].collision[0].collisionTime,
+          report.report[3].collision[1].collisionTime,
+          report.report[3].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[3],
+        borderColor: borderColor[3]
+      },
+      {
+        label: "500 MB",
+        data: [
+          report.report[4].collision[0].collisionTime,
+          report.report[4].collision[1].collisionTime,
+          report.report[4].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[4],
+        borderColor: borderColor[4]
+      },
+      {
+        label: "1000 MB",
+        data: [
+          report.report[5].collision[0].collisionTime,
+          report.report[5].collision[1].collisionTime,
+          report.report[5].collision[2].collisionTime
+        ],
+        borderWidth: 1,
+        backgroundColor: backgroundColor[5],
+        borderColor: borderColor[5]
+      }
+    ]
+  },
+  options: options
 });
