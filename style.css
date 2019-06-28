@@ -44,3 +44,22 @@ ul.people ul li {
 .people > li {
   font-style: italic;
 }
+
+@media screen and (max-width: 640px) {
+  html {
+    margin-bottom: 10px;
+  }
+
+  .chartWrapper {
+    margin-bottom: 30px;
+  }
+
+  .disclaimer {
+    margin-bottom: 40px;
+  }
+
+  .alert {
+    border-radius: 5px;
+    font-size: 0.8rem;
+  }
+}
